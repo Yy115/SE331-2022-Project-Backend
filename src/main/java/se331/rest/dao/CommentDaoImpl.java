@@ -2,7 +2,11 @@ package se331.rest.dao;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
+import se331.rest.entity.Doctor;
+import se331.rest.repository.DoctorRepository;
 
 @Repository
 public class CommentDaoImpl implements CommentDao{
