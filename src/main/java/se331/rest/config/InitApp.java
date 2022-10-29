@@ -63,6 +63,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("P1Chen")
                 .age("21")
                 .hometown("YunNan")
+                .firstdose_name("inactivated vaccine")
+                .firstdose_time("02-19,2020")
+                .vaccined_status("FirstDose")
                 .doctor(doctor3)
                 .build());
         patient2 = patientRepository.save(Patient.builder()
@@ -70,6 +73,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("p1Liu")
                 .age("22")
                 .hometown("ShanXi")
+                .firstdose_name("vector vaccine")
+                .firstdose_time("09-23,2021")
+                .seconddose_name("vector vaccine")
+                .seconddose_time("11-21,2021")
+                .thirddose_name("vector vaccine")
+                .thirddose_time("03-24,2022")
+                .vaccined_status("ThirdDose")
                 .doctor(doctor5)
                 .build());
         patient3 = patientRepository.save(Patient.builder()
@@ -77,6 +87,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("Han")
                 .age("27")
                 .hometown("Henan")
+                .firstdose_name("live attenuated vaccine")
+                .firstdose_time("05-14,2022")
+                .seconddose_name("live attenuated vaccine")
+                .seconddose_time("08-20,2022")
+                .vaccined_status("SecondDose")
                 .doctor(doctor1)
                 .build());
         patient4 = patientRepository.save(Patient.builder()
@@ -84,6 +99,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("Lu")
                 .age("20")
                 .hometown("Ningxia")
+                .firstdose_name("inactivated vaccine")
+                .firstdose_time("06-19,2022")
+                .vaccined_status("FirstDose")
                 .doctor(doctor2)
                 .build());
         patient5 = patientRepository.save(Patient.builder()
@@ -91,6 +109,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("Tao")
                 .age("19")
                 .hometown("Ningxia")
+                .vaccined_status("Not Vaccinated")
                 .doctor(doctor2)
                 .build());
         patient6 = patientRepository.save(Patient.builder()
@@ -98,6 +117,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("Ma")
                 .age("28")
                 .hometown("Ningxia")
+                .vaccined_status("Not Vaccinated")
                 .doctor(doctor2)
                 .build());
         patient7 = patientRepository.save(Patient.builder()
@@ -105,6 +125,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("Shen")
                 .age("23")
                 .hometown("Gansu")
+                .firstdose_name("live attenuated vaccine")
+                .firstdose_time("08-29,2021")
+                .seconddose_name("live attenuated vaccine")
+                .seconddose_time("11-11,2021")
+                .vaccined_status("SecondDose")
                 .doctor(doctor1)
                 .build());
         patient8 = patientRepository.save(Patient.builder()
@@ -112,6 +137,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("Li")
                 .age("23")
                 .hometown("Shanghai")
+                .firstdose_name("inactivated vaccine")
+                .firstdose_time("04-15,2021")
+                .seconddose_name("inactivated vaccine")
+                .seconddose_time("07-26,2021")
+                .thirddose_name("inactivated vaccine")
+                .thirddose_time("07-26,2022")
+                .vaccined_status("ThirdDose")
                 .doctor(doctor3)
                 .build());
         patient9 = patientRepository.save(Patient.builder()
@@ -119,6 +151,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("Ai")
                 .age("27")
                 .hometown("Guizhou")
+                .firstdose_name("live attenuated vaccine")
+                .firstdose_time("05-10,2021")
+                .seconddose_name("live attenuated vaccine")
+                .seconddose_time("08-19,2021")
+                .vaccined_status("SecondDose")
                 .doctor(doctor3)
                 .build());
         patient10 = patientRepository.save(Patient.builder()
@@ -126,6 +163,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("Chang")
                 .age("24")
                 .hometown("HuNan")
+                .firstdose_name("vector vaccine")
+                .firstdose_time("07-15,2022")
+                .seconddose_name("vector vaccine")
+                .seconddose_time("09-13,2022")
+                .thirddose_name("inactivated vaccine")
+                .thirddose_time("10-26,2022")
+                .vaccined_status("ThirdDose")
                 .doctor(doctor4)
                 .build());
         patient11 = patientRepository.save(Patient.builder()
@@ -133,6 +177,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("Wang")
                 .age("29")
                 .hometown("SiChuan")
+                .firstdose_name("RNA vaccine")
+                .firstdose_time("03-7,2022")
+                .seconddose_name("RNA vaccine")
+                .seconddose_time("09-29,2022")
+                .thirddose_name("inactivated vaccine")
+                .thirddose_time("10-29,2022")
+                .vaccined_status("ThirdDose")
                 .doctor(doctor4)
                 .build());
         patient12 = patientRepository.save(Patient.builder()
@@ -140,6 +191,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("Gao")
                 .age("21")
                 .hometown("Shanghai")
+                .firstdose_name("live attenuated vaccine")
+                .firstdose_time("06-23,2022")
+                .vaccined_status("FirstDose")
                 .doctor(doctor5)
                 .build());
 
@@ -194,11 +248,12 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .comment("Please drink more water.")
                 .doctor( doctor1)
                 .patient(patient2).build());
-        //四个医生的留言集合。
-        List<Comment> commentListP1 = new ArrayList<>();
-        List<Comment> commentListP2 = new ArrayList<>();
-        List<Comment> commentListP3 = new ArrayList<>();
-        List<Comment> commentListP4 = new ArrayList<>();
+        //五个医生的留言集合。
+        List<Comment> commentListd1 = new ArrayList<>();
+        List<Comment> commentListd2 = new ArrayList<>();
+        List<Comment> commentListd3 = new ArrayList<>();
+        List<Comment> commentListd4 = new ArrayList<>();
+        List<Comment> commentListd5 = new ArrayList<>();
         //一条留言对应一个接种者。
         List<Comment> commentList1 = new ArrayList<>();
         List<Comment> commentList2 = new ArrayList<>();
@@ -213,18 +268,18 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         List<Comment> commentList11 = new ArrayList<>();
         List<Comment> commentList12 = new ArrayList<>();
         //添加到对应的医生留言集合。
-        commentListP1.add(comment1);
-        commentListP1.add(comment2);
-        commentListP1.add(comment3);
-        commentListP2.add(comment4);
-        commentListP2.add(comment5);
-        commentListP2.add(comment6);
-        commentListP3.add(comment7);
-        commentListP3.add(comment8);
-        commentListP3.add(comment9);
-        commentListP4.add(comment10);
-        commentListP4.add(comment11);
-        commentListP4.add(comment12);
+        commentListd1.add(comment1);
+        commentListd1.add(comment2);
+        commentListd1.add(comment3);
+        commentListd2.add(comment4);
+        commentListd2.add(comment5);
+        commentListd5.add(comment6);
+        commentListd3.add(comment7);
+        commentListd3.add(comment8);
+        commentListd3.add(comment9);
+        commentListd4.add(comment10);
+        commentListd5.add(comment11);
+        commentListd4.add(comment12);
         //留言添加到对应的接种者中。
         commentList1.add(comment1);
         commentList2.add(comment2);
@@ -251,7 +306,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         patient10.setComments(commentList10);
         patient11.setComments(commentList11);
         patient12.setComments(commentList12);
-        doctor1.setComments(commentListP1);
+        doctor1.setComments(commentListd1);
         doctor1.getPatients().add(patient1);
         doctor1.getPatients().add(patient2);
         doctor2.getPatients().add(patient3);
@@ -282,6 +337,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         doctorRepository.save(doctor2);
         doctorRepository.save(doctor3);
         doctorRepository.save(doctor4);
+        doctorRepository.save(doctor5);
     }
 
 }
