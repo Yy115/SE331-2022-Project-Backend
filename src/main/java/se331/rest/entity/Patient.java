@@ -28,6 +28,8 @@ public class Patient {
     String firstdose_time;
     String seconddose_name;
     String seconddose_time;
+    String thirddose_name;
+    String thirddose_time;
 
     @ManyToOne
     Doctor doctor;
