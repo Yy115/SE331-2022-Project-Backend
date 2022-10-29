@@ -2,6 +2,7 @@ package se331.rest.dao;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 import se331.rest.entity.Doctor;
@@ -17,7 +18,7 @@ public class DoctorDaoImpl implements DoctorDao{
     }
 
     @Override
-    public page<Doctor> getDoctors(Integer pagesize,Integer page) {
+    public Page<Doctor> getDoctors(Integer pagesize, Integer page) {
         return doctorRepository.findAll(PageRequest.of(page-1,pagesize));
     }
 
