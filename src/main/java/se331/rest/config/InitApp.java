@@ -210,44 +210,44 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .patient(patient2).build());
         comment3 = commentRepository.save(Comment.builder()
                 .comment("No drinking")
-                .doctor( doctor1)
-                .patient(patient2).build());
+                .doctor( doctor2)
+                .patient(patient3).build());
         comment4 = commentRepository.save(Comment.builder()
                 .comment("Don't take a bath")
-                .doctor( doctor1)
-                .patient(patient2).build());
+                .doctor( doctor2)
+                .patient(patient4).build());
         comment5 = commentRepository.save(Comment.builder()
                 .comment("Take more rest and avoid strenuous exercise")
-                .doctor( doctor1)
-                .patient(patient2).build());
+                .doctor( doctor3)
+                .patient(patient5).build());
         comment6 = commentRepository.save(Comment.builder()
                 .comment("take medicine on time")
-                .doctor( doctor1)
-                .patient(patient2).build());
+                .doctor( doctor3)
+                .patient(patient6).build());
         comment7 = commentRepository.save(Comment.builder()
                 .comment("A light diet")
-                .doctor( doctor1)
-                .patient(patient2).build());
+                .doctor( doctor4)
+                .patient(patient7).build());
         comment8 = commentRepository.save(Comment.builder()
                 .comment("Please drink more water.")
-                .doctor( doctor1)
-                .patient(patient2).build());
+                .doctor( doctor4)
+                .patient(patient8).build());
         comment9 = commentRepository.save(Comment.builder()
                 .comment("Don't take hormone drugs")
-                .doctor( doctor1)
-                .patient(patient2).build());
+                .doctor( doctor5)
+                .patient(patient9).build());
         comment10 = commentRepository.save(Comment.builder()
                 .comment("Please eat more fruit.")
-                .doctor( doctor1)
-                .patient(patient2).build());
+                .doctor( doctor5)
+                .patient(patient10).build());
         comment11 = commentRepository.save(Comment.builder()
                 .comment("Please supplement protein.")
-                .doctor( doctor1)
-                .patient(patient2).build());
+                .doctor( doctor5)
+                .patient(patient11).build());
         comment12 = commentRepository.save(Comment.builder()
                 .comment("Please drink more water.")
-                .doctor( doctor1)
-                .patient(patient2).build());
+                .doctor( doctor5)
+                .patient(patient12).build());
         //五个医生的留言集合。
         List<Comment> commentListd1 = new ArrayList<>();
         List<Comment> commentListd2 = new ArrayList<>();
@@ -270,16 +270,21 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         //添加到对应的医生留言集合。
         commentListd1.add(comment1);
         commentListd1.add(comment2);
-        commentListd1.add(comment3);
+
+        commentListd2.add(comment3);
         commentListd2.add(comment4);
-        commentListd2.add(comment5);
-        commentListd5.add(comment6);
-        commentListd3.add(comment7);
-        commentListd3.add(comment8);
-        commentListd3.add(comment9);
-        commentListd4.add(comment10);
+
+        commentListd3.add(comment5);
+        commentListd3.add(comment6);
+
+        commentListd4.add(comment7);
+        commentListd4.add(comment8);
+
+        commentListd5.add(comment9);
+        commentListd5.add(comment10);
+
         commentListd5.add(comment11);
-        commentListd4.add(comment12);
+        commentListd5.add(comment12);
         //留言添加到对应的接种者中。
         commentList1.add(comment1);
         commentList2.add(comment2);
@@ -306,17 +311,27 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         patient10.setComments(commentList10);
         patient11.setComments(commentList11);
         patient12.setComments(commentList12);
+
         doctor1.setComments(commentListd1);
+        doctor2.setComments(commentListd2);
+        doctor3.setComments(commentListd3);
+        doctor4.setComments(commentListd4);
+        doctor5.setComments(commentListd5);
+
         doctor1.getPatients().add(patient1);
         doctor1.getPatients().add(patient2);
+
         doctor2.getPatients().add(patient3);
         doctor2.getPatients().add(patient4);
-        doctor2.getPatients().add(patient5);
-        doctor2.getPatients().add(patient6);
-        doctor3.getPatients().add(patient7);
-        doctor3.getPatients().add(patient8);
-        doctor3.getPatients().add(patient9);
-        doctor4.getPatients().add(patient10);
+
+        doctor3.getPatients().add(patient5);
+        doctor3.getPatients().add(patient6);
+
+        doctor4.getPatients().add(patient7);
+        doctor4.getPatients().add(patient8);
+
+        doctor5.getPatients().add(patient9);
+        doctor5.getPatients().add(patient10);
         doctor5.getPatients().add(patient11);
         doctor5.getPatients().add(patient12);
         //存储接种者的信息。

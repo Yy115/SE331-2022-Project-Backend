@@ -31,20 +31,7 @@ public class PatientController {
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         return new ResponseEntity<>(LabMapper.INSTANCE.getPatientDTO(pageOutput.getContent()), responseHeader, HttpStatus.OK);
     }
-    @GetMapping("/patientswithvaccine")
-    public ResponseEntity<?> getPatientListsWithVaccine(@RequestParam(value = "_limit",required = false) Integer perPage
-            ,@RequestParam(value = "_page", required = false) Integer page
-            , @RequestParam(value = "title", required = false) String keyword){
-        perPage = perPage == null ? 3 : perPage;
-        page = page == null ? 1 : page;
-        Page<Patient> pageOutput;
-//        if (keyword ==null)
-        pageOutput = patientService.getPatientsVaccineNot("Not Vaccinated",perPage,page);
-        HttpHeaders responseHeader = new HttpHeaders();
 
-        responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
-        return new ResponseEntity<>(LabMapper.INSTANCE.getPatientDTO(pageOutput.getContent()), responseHeader, HttpStatus.OK);
-    }
     @GetMapping("patient/{id}")
     public ResponseEntity<?> getPatient(@PathVariable("id")Long id){
         Patient output = patientService.getPatient(id);
