@@ -13,12 +13,11 @@ import java.util.List;
 
 public interface PatientRepository extends JpaRepository<Patient,Long> {
     List<Patient> findAll();
+
+    Page<Patient> findByDoctorId(Long doctor_id,Pageable pageRequest);
+
     @Modifying
     @Transactional
-    @Query(value = "update patient set vaccineinfo_id = ?1 where id = ?2",nativeQuery = true)
-    void AddVaccine(Long vaccineinfo_id,Long id);
-
-
-    @Query("select  p from Patient p where p.vaccined_status <> ?1")
-    Page<Patient> findAllByVaccineinfo_Vaccined_statusNot(String a,Pageable pageRequest);
+    @Query(value = "update patient set user_id = ?1 where id = ?2",nativeQuery = true)
+    void AddUser(Long user_id,Long id);
 }

@@ -34,10 +34,10 @@ public class PatientDaoImpl implements PatientDao{
         return patientRepository.save(patient);
     }
 
-
-
     @Override
-    public Page<Patient> getPatientsVaccineNot(String NotVaccinated,Integer pageSize, Integer page) {
-        return patientRepository.findAllByVaccineinfo_Vaccined_statusNot(NotVaccinated,PageRequest.of(page-1,pageSize));
+    public Page<Patient> getByDoctorId(Long doctor_id, Integer pageSize, Integer page) {
+        return patientRepository.findByDoctorId(doctor_id,PageRequest.of(page-1,pageSize));
     }
+
+
 }

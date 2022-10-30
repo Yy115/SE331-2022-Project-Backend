@@ -19,10 +19,6 @@ public class PatientServiceImpl implements PatientService{
         return patientDao.getPatients(pageSize,page);
     }
 
-    @Override
-    public Page<Patient> getPatientsVaccineNot(String NotVaccinated, Integer pageSize, Integer page) {
-        return patientDao.getPatientsVaccineNot(NotVaccinated, pageSize, page);
-    }
 
     @Override
     public Patient getPatient(Long id) {
@@ -32,5 +28,10 @@ public class PatientServiceImpl implements PatientService{
     @Override
     public Patient save(Patient patient) {
         return patientDao.save(patient);
+    }
+
+    @Override
+    public Page<Patient> getByDoctorId(Long doctor_id, Integer pageSize, Integer page) {
+        return patientDao.getByDoctorId(doctor_id,pageSize, page);
     }
 }

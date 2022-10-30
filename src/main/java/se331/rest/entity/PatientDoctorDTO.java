@@ -13,19 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 public class PatientDoctorDTO {
     Long id;
-
     String name;
     String sur_name;
     String age;
     String hometown;
-    String vaccined_status;
-    String firstdose_name;
-    String firstdose_time;
-    String seconddose_name;
-    String seconddose_time;
-    String thirddose_name;
-    String thirddose_time;
     List<String> imageUrl;
-    PatientDoctorDTO doctor;
-    List<CommentDTO> comments = new ArrayList<>();
+
 }
