@@ -10,8 +10,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;
-@SpringBootApplication(exclude= {SecurityAutoConfiguration.class })
-//@SpringBootApplication
+//@SpringBootApplication(exclude= {SecurityAutoConfiguration.class })
+@SpringBootApplication
 public class RestApplication {
 
     @PostConstruct

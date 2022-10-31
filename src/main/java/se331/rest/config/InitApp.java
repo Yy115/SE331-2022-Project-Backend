@@ -4,6 +4,8 @@ package se331.rest.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import se331.rest.entity.Comment;
 import se331.rest.entity.Doctor;
@@ -11,8 +13,16 @@ import se331.rest.entity.Patient;
 import se331.rest.repository.CommentRepository;
 import se331.rest.repository.DoctorRepository;
 import se331.rest.repository.PatientRepository;
+import se331.rest.security.entity.Authority;
+import se331.rest.security.entity.AuthorityName;
+import se331.rest.security.entity.User;
+import se331.rest.security.repository.AuthorityRepository;
+import se331.rest.security.repository.UserRepository;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -24,6 +34,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Autowired
     CommentRepository commentRepository;
 
+    @Autowired
+    AuthorityRepository authorityRepository;
+    @Autowired
+    UserRepository userRepository;
+    User user1 = new User();
+    User user2 = new User();
+    User user3 = new User();
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
         Doctor doctor1,doctor2,doctor3,doctor4,doctor5;
@@ -353,6 +370,70 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         doctorRepository.save(doctor3);
         doctorRepository.save(doctor4);
         doctorRepository.save(doctor5);
-    }
 
+        addUser();
+        doctor1.setUser(user1);
+        user1.setDoctor(doctor1);
+
+        doctor2.setUser(user2);
+        user2.setDoctor(doctor2);
+
+        patient1.setUser(user3);
+        user3.setPatient(patient1);
+
+        userRepository.save(user1);
+        userRepository.save(user2);
+        userRepository.save(user3);
+        doctorRepository.AddUser(user1.getId(),doctor1.getId());
+
+        doctorRepository.AddUser(user2.getId(),doctor2.getId());
+        patientRepository.AddUser(user3.getId(),patient1.getId());
+    }
+    private void addUser(){
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        Authority authDoctor = Authority.builder().name(AuthorityName.ROLE_DOCTOR).build();
+        Authority authPatient = Authority.builder().name(AuthorityName.ROLE_PATIENT).build();
+        Authority authAdmin = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
+        user1 = User.builder()
+                .username ( "admin")
+                .password ( encoder.encode ( "admin" ) )
+                .firstname ( "admin" )
+                .lastname ( "admin")
+                .email ( "admin@admin.com" ).enabled (true)
+                .lastPasswordResetDate(Date.from(LocalDate.of (2021,01,
+                        01).atStartOfDay(ZoneId.systemDefault ()).toInstant()))
+                .build();
+
+
+        user2 = User.builder()
+                .username ( "doctor")
+                .password ( encoder.encode ( "doctor" ) )
+                .firstname ( "doctor" )
+                .lastname ( "doctor")
+                .email ( "enabled@doctor.com" ).enabled (true)
+                .lastPasswordResetDate(Date.from(LocalDate.of (2021,01,
+                        01).atStartOfDay(ZoneId.systemDefault ()).toInstant()))
+                .build();
+
+        user3 = User.builder()
+                .username ( "patient")
+                .password ( encoder.encode ( "patient" ) )
+                .firstname ( "patient" )
+                .lastname ( "patient")
+                .email ( "enableUser@patient.com" ).enabled (true)
+                .lastPasswordResetDate(Date.from(LocalDate.of (2021,01,
+                        01).atStartOfDay(ZoneId.systemDefault ()).toInstant()))
+                .build();
+        authorityRepository.save(authAdmin);
+        authorityRepository.save(authDoctor);
+        authorityRepository.save(authPatient);
+        user1.getAuthorities().add(authAdmin);
+        user1.getAuthorities().add(authDoctor);
+        user1.getAuthorities().add(authPatient);
+        user2.getAuthorities().add(authDoctor);
+        user3.getAuthorities().add(authPatient);
+        userRepository.save(user1);
+        userRepository.save(user2);
+        userRepository.save(user3);
+    }
 }

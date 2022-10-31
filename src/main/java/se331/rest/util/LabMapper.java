@@ -1,6 +1,7 @@
 package se331.rest.util;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import se331.rest.entity.*;
@@ -17,4 +18,10 @@ public interface LabMapper {
     List<PatientDTO> getPatientDTO(List<Patient> patients);
     CommentDTO getCommentDTO(Comment comment);
     List<CommentDTO> getCommentDTO(List<Comment> commentList);
+
+    @Mapping(target = "authorities", expression = "java(patient.getUser().getAuthorities().stream().map(auth -> auth.getName().name()).collect(Collectors.toList()))")
+    PatientAuthDTO getPatientAuthDTO(Patient patient);
+
+    @Mapping(target = "authorities", expression = "java(doctor.getUser().getAuthorities().stream().map(auth -> auth.getName().name()).collect(Collectors.toList()))")
+    DoctorAuthDTO getDoctorAuthDTO(Doctor doctor);
 }
