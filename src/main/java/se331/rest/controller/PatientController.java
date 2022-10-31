@@ -32,6 +32,21 @@ public class PatientController {
         return new ResponseEntity<>(LabMapper.INSTANCE.getPatientDTO(pageOutput.getContent()), responseHeader, HttpStatus.OK);
     }
 
+    @GetMapping("/patientsbydoctor")
+    public ResponseEntity<?> getPatientListsByDoctor(@RequestParam(value = "_limit",required = false) Integer perPage
+            ,@RequestParam(value = "_page", required = false) Integer page
+            , @RequestParam(value = "doctorid", required = false) Long did){
+        perPage = perPage == null ? 3 : perPage;
+        page = page == null ? 1 : page;
+        Page<Patient> pageOutput;
+//        if (did ==null)
+        pageOutput = patientService.getByDoctorId(did,perPage,page);
+        HttpHeaders responseHeader = new HttpHeaders();
+
+        responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
+        return new ResponseEntity<>(LabMapper.INSTANCE.getPatientDTO(pageOutput.getContent()), responseHeader, HttpStatus.OK);
+    }
+
     @GetMapping("patient/{id}")
     public ResponseEntity<?> getPatient(@PathVariable("id")Long id){
         Patient output = patientService.getPatient(id);
@@ -44,6 +59,13 @@ public class PatientController {
     @PostMapping("/patient")
     public ResponseEntity<?> addPatient(@RequestBody Patient patient){
         Patient output = patientService.save(patient);
+        return ResponseEntity.ok(LabMapper.INSTANCE.getPatientDTO(output));
+    }
+
+    @PostMapping("/patientadddoctor")
+    public ResponseEntity<?> addPatient(@RequestParam(value = "pid",required = false) Long pid
+            ,@RequestParam(value = "did", required = false) Long did){
+        Patient output = patientService.saveByaddDoctor(pid, did);
         return ResponseEntity.ok(LabMapper.INSTANCE.getPatientDTO(output));
     }
 }

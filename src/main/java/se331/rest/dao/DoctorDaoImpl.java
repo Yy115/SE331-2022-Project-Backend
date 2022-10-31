@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import se331.rest.entity.Doctor;
 import se331.rest.repository.DoctorRepository;
 
+import java.util.List;
+
 @Repository
 public class DoctorDaoImpl implements DoctorDao{
     @Autowired
@@ -30,6 +32,11 @@ public class DoctorDaoImpl implements DoctorDao{
     @Override
     public Doctor save(Doctor doctor) {
         return doctorRepository.save(doctor);
+    }
+
+    @Override
+    public List<Doctor> getDoctors() {
+        return doctorRepository.findAll();
     }
 
 }

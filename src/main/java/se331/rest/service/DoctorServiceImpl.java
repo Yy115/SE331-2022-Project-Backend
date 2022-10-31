@@ -5,6 +5,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import se331.rest.dao.DoctorDao;
 import se331.rest.entity.Doctor;
+
+import java.util.List;
+
 @Service
 public class DoctorServiceImpl implements DoctorService{
     @Autowired
@@ -17,6 +20,11 @@ public class DoctorServiceImpl implements DoctorService{
     @Override
     public Page<Doctor> getDoctors(Integer pageSize, Integer page) {
         return doctorDao.getDoctors(pageSize, page);
+    }
+
+    @Override
+    public List<Doctor> getDoctors() {
+        return doctorDao.getDoctors();
     }
 
     @Override

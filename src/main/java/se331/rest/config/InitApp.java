@@ -191,10 +191,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sur_name("Gao")
                 .age("21")
                 .hometown("Shanghai")
-                .firstdose_name("live attenuated vaccine")
-                .firstdose_time("06-23,2022")
-                .vaccined_status("FirstDose")
-                .doctor(doctor5)
+//                .firstdose_name("live attenuated vaccine")
+//                .firstdose_time("06-23,2022")
+                .vaccined_status("Not Vaccinated")
+//                .doctor(doctor5)
                 .build());
 
 
@@ -333,7 +333,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         doctor5.getPatients().add(patient9);
         doctor5.getPatients().add(patient10);
         doctor5.getPatients().add(patient11);
-        doctor5.getPatients().add(patient12);
+//        doctor5.getPatients().add(patient12);
         //存储接种者的信息。
         patientRepository.save(patient1);
         patientRepository.save(patient2);

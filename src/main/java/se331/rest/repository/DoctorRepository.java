@@ -16,4 +16,6 @@ public interface DoctorRepository extends JpaRepository<Doctor,Long> {
     @Transactional
     @Query(value = "update doctor set user_id = ?1 where id = ?2",nativeQuery = true)
     void AddUser(Long user_id,Long id);
+
+
 }

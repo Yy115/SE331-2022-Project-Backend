@@ -28,6 +28,9 @@ public class DoctorController {
         pageOutput = doctorService.getDoctors(perPage, page);
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
+        if (keyword != null ){
+            return  new ResponseEntity<>(LabMapper.INSTANCE.getDoctorDTO(doctorService.getDoctors()),responseHeader, HttpStatus.OK);
+        }
         return new ResponseEntity<>(LabMapper.INSTANCE.getDoctorDTO(pageOutput.getContent()),responseHeader, HttpStatus.OK);
     }
 

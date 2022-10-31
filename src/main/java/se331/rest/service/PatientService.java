@@ -9,4 +9,5 @@ public interface PatientService {
     Patient getPatient(Long id);
     Patient save(Patient patient);
     Page<Patient> getByDoctorId(Long doctor_id, Integer pageSize, Integer page);
+    Patient saveByaddDoctor(Long pid,Long did);
 }
