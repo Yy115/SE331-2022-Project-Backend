@@ -60,6 +60,7 @@ public class WebSecurityConfig {
                 .antMatchers(HttpMethod.POST,"/uploadFile").permitAll()
                 .antMatchers(HttpMethod.POST,"/register").permitAll()
                 .antMatchers(HttpMethod.POST,"/setrole*").permitAll()
+                .antMatchers(HttpMethod.POST,"/patient*").permitAll()
                 .anyRequest()
                 .authenticated();
         http.addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
