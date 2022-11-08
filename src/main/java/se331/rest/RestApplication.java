@@ -33,7 +33,7 @@ public class RestApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000","http://localhost:4000","http://192.168.31.209:4000","http://54.234.147.205:4000")
+                        .allowedOrigins("http://localhost:3000","http://localhost:4000","http://192.168.31.209:4000","http://54.196.180.42:4000")
 
                         .exposedHeaders("x-total-count");
 
